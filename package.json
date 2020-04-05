@@ -1,0 +1,61 @@
+{
+  "name": "template-nuxt-ts-app",
+  "version": "0.0.0",
+  "description": "A template repository for application with Nuxt TypeScript",
+  "repository": "https://github.com/tsunematsu21/template-nuxt-ts.git",
+  "author": "tsunematsu21 <tsunematsu21@users.noreply.github.com>",
+  "license": "MIT",
+  "private": true,
+  "scripts": {
+    "dev": "nuxt-ts",
+    "build": "nuxt-ts build",
+    "generate": "nuxt-ts generate",
+    "start": "nuxt-ts start",
+    "lint": "eslint --ext .ts,.js,.vue --ignore-path .gitignore ."
+  },
+  "dependencies": {
+    "@nuxt/typescript-runtime": "^0.4.2",
+    "nuxt": "^2.12.2"
+  },
+  "devDependencies": {
+    "@commitlint/cli": "^8.3.5",
+    "@commitlint/config-conventional": "^8.3.4",
+    "@nuxt/typescript-build": "^0.6.2",
+    "@nuxtjs/eslint-config-typescript": "^1.0.2",
+    "@nuxtjs/eslint-module": "^1.1.0",
+    "eslint": "^6.8.0",
+    "eslint-config-prettier": "^6.10.1",
+    "eslint-plugin-nuxt": "^0.5.2",
+    "eslint-plugin-prettier": "^3.1.2",
+    "husky": "^4.2.3",
+    "lint-staged": "^10.1.1",
+    "node-sass": "^4.13.1",
+    "prettier": "^2.0.2",
+    "sass-loader": "^8.0.2"
+  },
+  "commitlint": {
+    "extends": [
+      "@commitlint/config-conventional"
+    ]
+  },
+  "lint-staged": {
+    "*.js": [
+      "eslint --ext .js --ignore-path .gitignore",
+      "git add"
+    ],
+    "*.ts": [
+      "eslint --ext .ts --ignore-path .gitignore",
+      "git add"
+    ],
+    "*.vue": [
+      "eslint --ext .vue --ignore-path .gitignore",
+      "git add"
+    ]
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged",
+      "commit-msg": "commitlint -E HUSKY_GIT_PARAMS"
+    }
+  }
+}
